@@ -19,9 +19,10 @@ public class UserService implements IUserService {
     //protected FauxUserService repository;
 
     @Override
-    public void add(User u) {
+    public boolean add(User u) {
 		// TODO Auto-generated method stub
         //repository.save(u);
+    	return true;
     }
 
     @Override

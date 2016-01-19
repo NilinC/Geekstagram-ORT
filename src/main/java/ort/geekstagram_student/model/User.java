@@ -25,6 +25,8 @@ public class User implements Serializable{
 	@NotNull
 	private String password;
 	
+	private String token;
+	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -67,6 +69,14 @@ public class User implements Serializable{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 	

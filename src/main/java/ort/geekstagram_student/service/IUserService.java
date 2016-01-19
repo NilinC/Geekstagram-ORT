@@ -6,7 +6,7 @@ import ort.geekstagram_student.model.User;
 
 public interface IUserService {
 
-	public void add(User u);
+	public boolean add(User u);
 
     public void remove(Long id);
 
