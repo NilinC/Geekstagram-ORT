@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: econocom-ort-student
 Implementation-Version: 0.1.0
-Built-By: frachet
+Built-By: j.mangini
 Implementation-Vendor-Id: org.springframework
 Build-Jdk: 1.8.0_65
 Created-By: Maven Integration for Eclipse
