@@ -2,6 +2,11 @@ GEEKSTAGRAM
 -----------
 
 API Documentation
+-----------------
+
+USER
+----
+
 	
 
 > Récupérer tous les utilisateurs
@@ -60,5 +65,55 @@ API Documentation
 
 ----------
 
+POST
+----
 
+> Récupérer tous les POSTS
+
+    GET: /api/posts 
+
+----------
+
+
+> Récupérer tous les POSTS d'un utilisateur
+
+    GET: /api/posts/user/{id_user}
+
+
+----------
+
+> Récupérer un POST
+
+    GET: /api/posts/{id}
+
+
+----------
+
+> Récupérer un POST de un Utilisateur précis
+
+  
+
+    GET: /api/post/user/{id}
+
+
+----------
+
+
+> Ajouter un POST
+
+    POST: /api/posts
+
+
+----------
+
+> Modifier un POST
+
+    PUT: /api/posts/{id}
     
+
+
+----------
+
+> Supprimer un POST
+
+    DELETE: /api/posts/{id}

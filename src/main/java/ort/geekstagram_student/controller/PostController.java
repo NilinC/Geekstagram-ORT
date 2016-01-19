@@ -29,7 +29,7 @@ public class PostController
 	 *
 	 * @return The list of posts
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "/all_posts")
+	@RequestMapping(method = RequestMethod.GET, value = "/api/posts")
 	public Iterable<PostStagram> getAllPosts()
 	{
 		return this.post_service.getAllPosts();
@@ -43,7 +43,7 @@ public class PostController
 	 *            
 	 * @return The list of posts
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "/posts_user/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/api/posts/user/{id}")
 	public Iterable<PostStagram> getAllPostsByIdUser(@PathVariable("id") int id_user)
 	{
 		return this.post_service.getAllPostsByIdUser(id_user);
@@ -58,7 +58,7 @@ public class PostController
 	 *            
 	 * @return The post
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "/post/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/api/posts/{id}")
 	public PostStagram getPostByIdPost(@PathVariable("id") int id_post)
 	{
 		try
@@ -81,7 +81,7 @@ public class PostController
 	 *            
 	 * @return The post
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "/post_user/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/api/post/user/{id}")
 	public PostStagram getPostByIdUser(@PathVariable("id") int id_user)
 	{
 		try
@@ -103,7 +103,7 @@ public class PostController
 	 *            
 	 * @returns true if insert is ok or false
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "/add_post", consumes="application/json")
+	@RequestMapping(method = RequestMethod.POST, value = "/api/posts", consumes="application/json")
 	public boolean addPost(@RequestBody PostStagram post)
 	{
 		try
@@ -128,7 +128,7 @@ public class PostController
 	 *            
 	 * @returns true if update is ok or false
 	 */
-	@RequestMapping(method = RequestMethod.PUT, value= "/update_post/{id}", consumes="application/json")
+	@RequestMapping(method = RequestMethod.PUT, value= "/api/posts/{id}", consumes="application/json")
 	public boolean updatePost(@PathVariable("id") int id_post, @RequestBody PostStagram post)
 	{
 		try
@@ -144,7 +144,7 @@ public class PostController
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/delete_post/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/api/posts/{id}")
 	public boolean deletePost(@PathVariable("id") int id_post)
 	{
 		try
