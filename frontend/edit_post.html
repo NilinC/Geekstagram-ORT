@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	
+	<link href="basic.css" rel="stylesheet">
+	
+	<title>Modifier Post</title>
+  </head>
+
+	<body>
+
+		<nav class="navbar navbar-inverse navbar-geek navbar-fixed-top">
+		  <div class="container">
+		  
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand navbar-geek" href="#">
+				<span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+				Geekstagram
+			  </a>
+			  
+			  
+			</div>
+			
+			<div id="navbar" class="navbar-collapse collapse">
+			  <form class="navbar-form navbar-right">
+				<div class="form-group">
+				  <input type="text" placeholder="Recherche" class="form-control">
+				</div>
+				<button type="submit" class="btn btn-success">Rechercher</button>
+			  </form>
+			</div>
+
+		</div>
+		</nav>
+
+		<div id="content" class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+				
+				<div class="panel panel-primary">
+					<div class="panel-heading"><h3 class="panel-title">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+					Modifier Post 1
+					</h3></div>
+				<div class="panel-body">
+				<form>
+					<label>Utilisateur</label>
+					<select name="id_user" class="form-control">
+						<option value="user1">User 1</option> 
+						<option value="user2">User 2</option>
+						<option value="user3">User 3</option>
+					</select>
+					
+					<label>Date</label>
+					<input type="text" name="date" class="form-control">
+					
+					<label>Contenu du post</label>
+					<textarea name="content_post" rows="6" cols="50" class="form-control">
+					</textarea>
+					
+					</br>
+					<p><a class="btn btn-primary" href="#" role="button">Modifier</a></p>
+				</form>
+				</div>
+				</div>
+				</div>
+		  </div>
+
+		  <hr>
+
+			<nav class="navbar navbar-default navbar-fixed-bottom">
+				<div class="container">
+					<span class="footer-geek">© 2016 GeekStagram</span>
+					</br>
+					<span class="footer-geek" style="float:right;">Aliette, Christopher, Jessica</span>
+				</div>
+			</nav>
+		</div>
+		
+	</body>
+</html>
