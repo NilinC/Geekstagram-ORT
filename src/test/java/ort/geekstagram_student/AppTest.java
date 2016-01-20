@@ -65,7 +65,7 @@ public class AppTest
     }
     
 
-    public void testConnect(){
+    /*public void testConnect(){
     	
     	User u = new User("test","test@test.fr","test");
     	//u.setId(new Date().getTime());
@@ -75,7 +75,7 @@ public class AppTest
 restController.add(u);
     	assertEquals("0",restController.connect(u));
     }
-    
+    */
     
     
 }
