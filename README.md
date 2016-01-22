@@ -22,7 +22,7 @@ USER
 ----------
 
 > Ajouter un utilisateur 
-	> retourne l'id de l'utilisateur ou 0 en cas d'erreur
+	> retourne l'id de l'utilisateur ou 1 en cas d'erreur
 
     POST: /api/users
 	request :
@@ -47,7 +47,7 @@ USER
 
 ----------
 
-> Connecter un utilisateur, renvoie un token ou 0 en cas d'erreur
+> Connecter un utilisateur, renvoie un token ou 1 en cas d'erreur
 
     POST: /api/users/connect
 	
