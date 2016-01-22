@@ -141,7 +141,7 @@ public class UserRestController {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/api/users/connect")
     public String connect(@RequestBody User user) {
-        String token = "0";
+        String token = "1";
         //System.out.println(user.getEmail());
 
         for (User u : userService.getAll()) {
@@ -168,6 +168,7 @@ public class UserRestController {
             for (User u : userService.getAll()) {
                 if (u.getId() == id) {
                     if (!u.getToken().equalsIgnoreCase("")) {
+                        u.setToken("1");
                         response = ResponseEntity.status(200).build();
                     } else {
                         response = ResponseEntity.status(400).build();
