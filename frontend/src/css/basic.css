@@ -4,6 +4,11 @@ body {
 	background-color: #eee;
 }
 
+.navbar-nav li a {
+	font-weight: bold;
+	color: #ffffff !important;
+}
+
 
 .footer-geek{
     color: #2e6da4;
