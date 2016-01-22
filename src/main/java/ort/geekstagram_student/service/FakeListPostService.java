@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 import ort.geekstagram_student.model.PostStagram;
 
+/**
+ * 
+ * @author Jessica MANGINI
+ */
 @Component
 @Qualifier("FakeListPostService")
 public class FakeListPostService implements IPostService
@@ -35,7 +39,7 @@ public class FakeListPostService implements IPostService
 	 * @returns The list of posts 
 	 */
 	@Override
-	public Iterable<PostStagram> getAllPostsByIdUser(int id_user)
+	public Iterable<PostStagram> getAllPostsByIdUser(Long id_user)
 	{
 		ArrayList<PostStagram> return_user_post = new ArrayList<PostStagram>();
 		Iterable<PostStagram> allPosts = this.liste;
@@ -81,7 +85,7 @@ public class FakeListPostService implements IPostService
 	 * @returns The post of the user
 	 */
 	@Override
-	public PostStagram getPostByIdUser(int id_user)
+	public PostStagram getPostByIdUser(Long id_user)
 	{
 		PostStagram return_post = new PostStagram();
 		Iterable<PostStagram> allPosts = this.liste;
@@ -104,12 +108,15 @@ public class FakeListPostService implements IPostService
 	 * @returns true if insert is ok or false
 	 */
 	@Override
-	public boolean addPost(PostStagram post) throws Exception
+	public boolean addPost(PostStagram post,long id_user) throws Exception
 	{
 		if(!this.liste.contains(post))
 		{
 			post.setId_post(this.id++);
 			post.setDate_post(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+			if(id_user != 0){
+				post.setId_user(id_user);
+			}
 			this.liste.add(post);
 			return true;
 		}
