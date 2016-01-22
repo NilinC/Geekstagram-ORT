@@ -48,7 +48,7 @@ public class AppTest
     	User u = new User("test","test@test.fr","test");
     	User u2 = new User("test","test@test.fr","test");
     	restController.add(u);
-    	assertEquals(new Long("0"),restController.add(u2));
+    	assertEquals(new Long("1"),restController.add(u2));
     }
     
     public void testAddUser2(){
