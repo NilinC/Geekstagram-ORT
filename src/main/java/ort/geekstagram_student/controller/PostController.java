@@ -44,7 +44,7 @@ public class PostController
 	 * @return The list of posts
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/api/posts/user/{id}")
-	public Iterable<PostStagram> getAllPostsByIdUser(@PathVariable("id") int id_user)
+	public Iterable<PostStagram> getAllPostsByIdUser(@PathVariable("id") long id_user)
 	{
 		return this.post_service.getAllPostsByIdUser(id_user);
 	}
@@ -82,7 +82,7 @@ public class PostController
 	 * @return The post
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/api/post/user/{id}")
-	public PostStagram getPostByIdUser(@PathVariable("id") int id_user)
+	public PostStagram getPostByIdUser(@PathVariable("id") long id_user)
 	{
 		try
 		{
@@ -103,12 +103,12 @@ public class PostController
 	 *            
 	 * @returns true if insert is ok or false
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "/api/posts", consumes="application/json")
-	public boolean addPost(@RequestBody PostStagram post)
+	@RequestMapping(method = RequestMethod.POST, value = "/api/posts/user/{id}", consumes="application/json")
+	public boolean addPost(@RequestBody PostStagram post,@PathVariable("id") Long id)
 	{
 		try
 		{
-			this.post_service.addPost(post);
+			this.post_service.addPost(post,id);
 			return true;
 		}
 		catch (Exception e)

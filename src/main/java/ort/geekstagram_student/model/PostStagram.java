@@ -28,7 +28,7 @@ public class PostStagram
 	 * The ID of the user
 	 */
 	@NotNull
-	private int id_user;
+	private long id_user;
 	/**
 	 * The date (SimpleDateFormat) when the post has been published
 	 */
@@ -71,7 +71,7 @@ public class PostStagram
 	 * @param content_post
 	 *            Content of the post
 	 */
-	public PostStagram(int id_user, String content_post)
+	public PostStagram(long id_user, String content_post)
 	{
 		super();
 		this.id_user = id_user;
@@ -141,7 +141,7 @@ public class PostStagram
 	 * 
 	 * @returns The ID of the user
 	 */
-	public int getId_user() {
+	public long getId_user() {
 		return id_user;
 	}
 
@@ -152,7 +152,7 @@ public class PostStagram
 	 * @param id_user
 	 *            The ID user of the post
 	 */
-	public void setId_user(int id_user) {
+	public void setId_user(long id_user) {
 		this.id_user = id_user;
 	}
 }
