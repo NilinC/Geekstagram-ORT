@@ -9,6 +9,9 @@ body {
 	color: #ffffff !important;
 }
 
+.panel-footer {
+	text-align: center;
+}
 
 .footer-geek{
     color: #2e6da4;
