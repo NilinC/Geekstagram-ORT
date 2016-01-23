@@ -110,5 +110,4 @@ public class FauxUserService implements IUserService {
         System.out.print(this_user.getEmail() + " fonction update fauxuserservice2");
         return this_user;
     }
-
 }

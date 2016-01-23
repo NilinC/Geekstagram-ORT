@@ -22,5 +22,4 @@ public class Tool {
 		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
 		return matcher.find();
 	}
-
 }
