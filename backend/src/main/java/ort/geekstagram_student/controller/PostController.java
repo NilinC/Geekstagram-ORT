@@ -2,6 +2,7 @@ package ort.geekstagram_student.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class PostController
 	 *
 	 * @return The list of posts
 	 */
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.GET, value = "/api/posts")
 	public Iterable<PostStagram> getAllPosts()
 	{
@@ -43,6 +45,7 @@ public class PostController
 	 *            
 	 * @return The list of posts
 	 */
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.GET, value = "/api/posts/user/{id}")
 	public Iterable<PostStagram> getAllPostsByIdUser(@PathVariable("id") long id_user)
 	{
@@ -58,6 +61,7 @@ public class PostController
 	 *            
 	 * @return The post
 	 */
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.GET, value = "/api/posts/{id}")
 	public PostStagram getPostByIdPost(@PathVariable("id") int id_post)
 	{
@@ -81,6 +85,7 @@ public class PostController
 	 *            
 	 * @return The post
 	 */
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.GET, value = "/api/post/user/{id}")
 	public PostStagram getPostByIdUser(@PathVariable("id") long id_user)
 	{
@@ -103,6 +108,7 @@ public class PostController
 	 *            
 	 * @returns true if insert is ok or false
 	 */
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.POST, value = "/api/posts/user/{id}", consumes="application/json")
 	public boolean addPost(@RequestBody PostStagram post,@PathVariable("id") Long id)
 	{
@@ -128,6 +134,7 @@ public class PostController
 	 *            
 	 * @returns true if update is ok or false
 	 */
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.PUT, value= "/api/posts/{id}", consumes="application/json")
 	public boolean updatePost(@PathVariable("id") int id_post, @RequestBody PostStagram post)
 	{
@@ -143,7 +150,12 @@ public class PostController
 		
 	}
 	
-	
+	/**
+	 * Delete one post by id_post
+	 * @param id_post
+	 * @return
+	 */
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/api/posts/{id}")
 	public boolean deletePost(@PathVariable("id") int id_post)
 	{
