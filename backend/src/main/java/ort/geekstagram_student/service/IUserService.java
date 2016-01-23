@@ -43,5 +43,4 @@ public interface IUserService {
      * @return
      */
     public User update(Long id, User entity);
-
 }

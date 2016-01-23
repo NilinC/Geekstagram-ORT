@@ -13,6 +13,10 @@ body {
 	text-align: center;
 }
 
+.floatRight {
+	float: right;
+}
+
 .footer-geek{
     color: #2e6da4;
 }
