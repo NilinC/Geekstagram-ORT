@@ -1,35 +1,30 @@
-angular.module('geekstagram', [])
-    .controller('userController', function($http) {
-        var user = this;
-        var url = 'http://localhost:8000';
-        usersList = [];
+angular.module('Geekstagram.user', [])
+    .controller('userController', function($http, $location) {
+        var self = this;
+        var urlUser = '/Geekstagram/frontend/src/data/user.json';
+        var urlPost = '/Geekstagram/frontend/src/data/post.json';
+        self.user = {};
+        self.postList = [];
+
+        if (!localStorage.getItem('isConnected')) {
+            $location.path('/login');
+        }
 
         /**
          * Aliette Ruppert
          * Get one user by its id
-         *
-         * @param user
          */
-        usersList.getUser = function(user) {
-            $http.get(url + '/api/users/' + user.id).
-                then(function(response) {
-                    usersList = response.data;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
+        self.getUser = function() {
 
-        /**
-         * Aliette Ruppert
-         * Add a new user
-         */
-        usersList.addNewUser = function() {
-            $http.post(url + '/api/users', { name: usersList.userName, pseudo: usersList.pseudo, password: usersList.password, mailAddress: usersList.mailAddress, createdAt: new Date() }).
+            $http.get(urlUser).
                 then(function(response) {
-                    usersList.push(response.data);
-                    usersList.userName = '';
-                }, function() {
-                    alert('An error occured');
+                    for (var i = 0; i < response.data.length; i++) {
+                        if (response.data[i].id === parseInt(localStorage.getItem('userId'))) {
+                            self.user.name = response.data[i].name;
+                            self.user.email = response.data[i].email;
+                            self.user.password = response.data[i].password;
+                        }
+                    }
                 });
         };
 
@@ -39,86 +34,28 @@ angular.module('geekstagram', [])
          *
          * @param user
          */
-        usersList.updateUser = function(user) {
-            $http.put(url + '/api/users/' + user.id, { name: user.name, pseudo: user.pseudo, password: user.password, mailAddress: user.mailAddress }).
+        self.updateUser = function(user) {
+            $http.put(urlUser + user.id, { name: user.name, password: user.password, email: user.email}).
                 then(function() {
-                    user.updating = false;
+
                 }, function() {
                     alert('An error occured');
                 });
+                user.updating = false;
         };
 
         /**
          * Aliette Ruppert
-         * Update a user's name
-         *
-         * @param user
+         * Get all posts
          */
-        usersList.patchName = function(user) {
-            $http.patch(url + '/api/users/' + user.id, { name: user.name }).
-                then(function() {
-                    user.updating = false;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
-
-        /**
-         * Aliette Ruppert
-         * Update a user's nickname
-         *
-         * @param user
-         */
-        usersList.patchNickname = function(user) {
-            $http.patch(url + '/api/users/' + user.id, { pseudo: user.pseudo }).
-                then(function() {
-                    user.updating = false;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
-
-        /**
-         * Aliette Ruppert
-         * Update a user's password
-         *
-         * @param user
-         */
-        usersList.patchPassword = function(user) {
-            $http.patch(url + '/api/users/' + user.id, { password: user.password }).
-                then(function() {
-                    user.updating = false;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
-
-        /**
-         * Aliette Ruppert
-         * Update a user's email
-         *
-         * @param user
-         */
-        usersList.patchEmail = function(user) {
-            $http.patch(url + '/api/users/' + user.id, { mail: user.mail }).
-                then(function() {
-                    user.updating = false;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
-
-        /**
-         * Aliette Ruppert
-         * Delete a user
-         *
-         * @param user
-         */
-        usersList.deleteUser = function(user) {
-            $http.delete(url + '/api/users/' + user.id).
-                then(function() {
-                    var index = usersList.indexOf(user);
-                    usersList.splice(index, 1);
+        self.getAllPosts = function() {
+            $http.get(urlPost).
+                then(function(response) {
+                    for (var i = 0; i < response.data.length; i++) {
+                        if (response.data[i].user === parseInt(localStorage.getItem('userId'))) {
+                            self.postList.push(response.data[i]);
+                        }
+                    }
                 }, function() {
                     alert('An error occured');
                 });

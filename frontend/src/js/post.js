@@ -1,21 +1,8 @@
 angular.module('Geekstagram', [])
     .controller('PostController', function($http) {
-        var postsList = this;
-        var url = 'http://localhost:8000';
-        postsList.user = [];
-
-        /**
-         * Aliette Ruppert
-         * Get all posts
-         */
-        postsList.getAllPosts = function() {
-            $http.get(url + '/api/posts').
-                then(function(response) {
-                    postsList.user = response.data;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
+        var self = this;
+        var url = '/Geekstagram/frontend/src/data/post.json';
+        self.postList = [];
 
         /**
          * Aliette Ruppert
@@ -23,10 +10,10 @@ angular.module('Geekstagram', [])
          *
          * @param user
          */
-        postsList.getAllUsersPosts = function(user) {
-            $http.get(url + '/api/users/' + user.id + '/posts').
+        self.getAllUsersPosts = function(user) {
+            $http.get(url).
                 then(function(response) {
-                    postsList.user = response.data;
+                    self.postList = response.data;
                 }, function() {
                 alert('An error occured');
                 });
@@ -38,23 +25,10 @@ angular.module('Geekstagram', [])
          *
          * @param post
          */
-        postsList.getPost = function(post) {
-            $http.get(url + '/api/posts/' + post.id).
+        self.getPost = function(post) {
+            $http.get(url).
                 then(function(response) {
-                    postsList.user = response.data;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
-
-        /**
-         * Aliette Ruppert
-         * Submit a new post
-         */
-        postsList.addNewPost = function() {
-            $http.post(url + '/api/posts', { title: postsList.title, content: postsList.content, user: postsList.user }).
-                then(function(response) {
-                    postsList.user.push(response.data);
+                    self.postList = response.data;
                 }, function() {
                     alert('An error occured');
                 });
@@ -66,38 +40,8 @@ angular.module('Geekstagram', [])
          *
          * @param post
          */
-        postsList.updatePost = function(post) {
-            $http.put(url + '/api/posts/' + post.id, { title: post.title, content: post.content, user: post.user }).
-                then(function() {
-                    post.updating = false;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
-
-        /**
-         * Aliette Ruppert
-         * Update post's title
-         *
-         * @param post
-         */
-        postsList.patchTitle = function(post) {
-            $http.patch(url + 'api/posts/' + post.id, { title: post.title }).
-                then(function() {
-                    post.updating = false;
-                }, function() {
-                    alert('An error occured');
-                });
-        };
-
-        /**
-         * Aliette Ruppert
-         * Update post's content
-         *
-         * @param post
-         */
-        postsList.patchContent = function(post) {
-            $http.patch(url + '/api/posts/' + post.id, { content: post.content }).
+        self.updatePost = function(post) {
+            $http.put(url).
                 then(function() {
                     post.updating = false;
                 }, function() {
@@ -111,11 +55,11 @@ angular.module('Geekstagram', [])
          *
          * @param post
          */
-        postsList.deletePost = function(post) {
-            $http.delete(url + '/api/posts/' + post.id).
+        self.deletePost = function(post) {
+            $http.delete(url).
                 then(function() {
-                    var index = postsList.indexOf(post);
-                    postsList.splice(index, 1);
+                    var index = self.indexOf(post);
+                    self.splice(index, 1);
                 }, function() {
                     alert('An error occured');
                 });
