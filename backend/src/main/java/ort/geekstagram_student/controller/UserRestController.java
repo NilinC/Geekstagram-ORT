@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,7 @@ public class UserRestController {
      *
      * @return La liste de tous les utilisateurs
      */
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.GET, value = "/api/users")
     public Iterable<User> getAll() {
         return userService.getAll();
@@ -48,6 +50,7 @@ public class UserRestController {
      * @param User user, Objet utilisateur que l'on souhaite ajouter
      * @return l'id du user ou 1 si une erreur c'est produite
      */
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST, value = "/api/users")
     public Long add(@RequestBody User user) {
         User entity = null;
@@ -73,6 +76,7 @@ public class UserRestController {
      * @param User user, Objet user que l'on veut modifier
      * @return ResponseEntity response 200 si ok ou 400 en cas d'erreur
      */
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.PUT, value = "/api/users/{id}")
     public ResponseEntity update(@PathVariable("id") Long id, @RequestBody User user) {
         try {
@@ -94,6 +98,7 @@ public class UserRestController {
      * @param id de l'utilisateur que l'on souhaite supprimer
      * @return ResponseEntity response 200 si ok ou 400 en cas d'erreur
      */
+    @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping(method = RequestMethod.DELETE, value = "/api/users/{id}")
     public ResponseEntity remove(@PathVariable("id") long id) {
         try {
@@ -112,6 +117,7 @@ public class UserRestController {
      * @param id
      * @return Retourne l'utilisateur demandé
      */
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.GET, value = "/api/users/{id}")
     public User getById(@PathVariable("id") Long id) {
         try {
@@ -127,6 +133,7 @@ public class UserRestController {
      *
      * @return Retourne un utilisateur
      */
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.GET, value = "/api/users/test")
     public User test() {
         return new User("Test content", "test@test.fr", "mon mot de passe");
@@ -139,6 +146,7 @@ public class UserRestController {
      * @param user
      * @return String token
      */
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST, value = "/api/users/connect")
     public String connect(@RequestBody User user) {
         String token = "1";
@@ -161,6 +169,7 @@ public class UserRestController {
      * @param id
      * @return 
      */
+    @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST, value = "/api/users/disconect/{id}")
     public ResponseEntity disconnect(@PathVariable("id") long id) {
 
