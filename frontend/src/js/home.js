@@ -1,8 +1,7 @@
 angular.module('Geekstagram.home', [])
     .controller('homeController', function($http, $location) {
         var self = this;
-        var urlPost = '/Geekstagram/frontend/src/data/post.json';
-        var urlUser = '/Geekstagram/frontend/src/data/user.json';
+        var url = 'http://localhost:8081/api/';
         self.postList = [];
         self.userList = [];
         self.content = '';
@@ -16,7 +15,7 @@ angular.module('Geekstagram.home', [])
          * Get all the users' app
          */
         self.getUsers = function() {
-            $http.get(urlUser).
+            $http.get(url + 'users').
             then(function(response) {
                 self.userList = response.data;
             });
@@ -30,8 +29,9 @@ angular.module('Geekstagram.home', [])
          * @returns {*}
          */
         self.getUser = function(id) {
+
             for(var i = 0; i < self.userList.length; i++) {
-                if (self.userList[i].id === id) {
+                if (self.userList[i].id == id) {
                     return self.userList[i];
                 }
             }
@@ -42,7 +42,7 @@ angular.module('Geekstagram.home', [])
          * Get all posts
          */
         self.getAllPosts = function() {
-            $http.get(urlPost).
+            $http.get(url + 'posts').
                 then(function(response) {
                     self.postList = response.data;
                 }, function() {
@@ -55,14 +55,15 @@ angular.module('Geekstagram.home', [])
          * Submit a new post
          */
         self.addNewPost = function() {
-            var post = { content: self.content, date: new Date(), user: parseInt(localStorage.getItem("userId")) };
-            $http.post(urlPost, post).
-            then(function(response) {
-
-            }, function() {
-                alert('An error occured');
-            });
-            self.postList.push(post);
-            self.content = '';
+            if (!!self.content) {
+                var post = { content_post: self.content };
+                $http.post(url + 'posts/user/' + localStorage.getItem("userId"), post).
+                then(function(response) {
+                    self.postList.push(response.data);
+                }, function() {
+                    alert('An error occured');
+                });
+                self.content = '';
+            }
         };
     });

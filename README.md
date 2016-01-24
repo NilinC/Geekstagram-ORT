@@ -9,6 +9,10 @@ GEEKSTAGRAM
     java -jar backend/target/econocom-ort-student-0.1.0.jar
     
 
+> Install frontend
+
+    cd frontend/
+    npm install
 
 ---------
 
