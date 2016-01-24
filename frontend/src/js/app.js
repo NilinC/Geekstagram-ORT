@@ -5,7 +5,8 @@ var app = angular.module('Geekstagram', [
     'Geekstagram.home',
     'Geekstagram.menu',
     'Geekstagram.signIn',
-    'Geekstagram.user'
+    'Geekstagram.user',
+    'Geekstagram.searchUser'
 ]);
 
 app.config(['$routeProvider',
@@ -22,15 +23,15 @@ app.config(['$routeProvider',
                 controller: 'userController',
                 controllerAs: 'userCtrl'
             })
-            .when('/modifier-post/:id', {
-                templateUrl: 'views/edit_post.html',
-                controller: 'postController',
-                controllerAs: 'postCtrl'
-            })
             .when('/login', {
                 templateUrl: 'views/signin.html',
                 controller: 'signInController',
                 controllerAs: 'signInCtrl'
+            })
+            .when('/user/:name', {
+                templateUrl: 'views/search_result.html',
+                controller: 'searchUserController',
+                controllerAs: 'searchUserCtrl'
             })
     }
 ]);
